@@ -82,20 +82,10 @@ function getCommandSyntax(cmd, routerType, ipprefix) {
 
   switch (cmd) {
     case 'bgp':
-      switch (routerType) {
-        case 'JunOS':
-          return `show route protocol bgp ${ipprefix} table inet.0 detail`
-        case 'IOS-XR':
-          return `show bgp ipv4 unicast ${ipprefix}`
-      }
+      return `birdc show route all for ${ipprefix}`
     case 'ping':
-      return `ping ${ipprefix} count 5`
+      return `ping ${ipprefix}`
     case 'traceroute':
-      switch (routerType) {
-        case 'JunOS':
-          return `traceroute ${ipprefix} wait 2`
-        case 'IOS-XR':
-          return `traceroute ${ipprefix} timeout 2 probe 2`
-      }
-  }
+      return `traceroute ${ipprefix}`
+    }
 }

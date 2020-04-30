@@ -31,19 +31,24 @@ def lg():
     # get parameters from the request body
     req_data = request.get_json()
     # obtain the router object and the ready-to-enter command
-    router, command = helpers.get_vars(req_data['router'], req_data['cmd'], req_data['ipprefix'])
-    # instantiate our SSH_Client class
-    client = ssh_client.SSH_Client(router)
-    # run the command
-    output_stream = client.run(command)
-    # generator function
-    def generate():
-        for chunk in output_stream:
-            yield chunk
-        # close the underlaying transport session of the ssh client
-        client.close()
-    # each yield iteration  in generate() is sent directly to the browser
-    return Response(generate())
+    if helpers.is_ipv6(req_data['ipprefix']): 
+      router, command = helpers.get_vars(req_data['router'], req_data['cmd'], req_data['ipprefix'])
+      # instantiate our SSH_Client class
+      client = ssh_client.SSH_Client(router)
+      # run the command
+      output_stream = client.run(command)
+      # generator function
+      def generate():
+          for chunk in output_stream:
+              yield chunk
+          # close the underlaying transport session of the ssh client
+          client.close()
+      # each yield iteration  in generate() is sent directly to the browser
+      return Response(generate())
+    else:
+      return Response("Input is not a valid IPv6 address")
+
+
 
 
 if __name__ == '__main__':
