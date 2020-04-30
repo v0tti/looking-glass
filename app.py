@@ -46,7 +46,7 @@ def lg():
       # each yield iteration  in generate() is sent directly to the browser
       return Response(generate())
     else:
-      return Response("Input is not a valid IPv6 address")
+      return Response("Not a valid IPv6 address.")
 
 
 
