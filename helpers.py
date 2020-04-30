@@ -27,5 +27,5 @@ def is_ipv6(ip_string):
     return True
   except ipaddress.AddressValueError:
     return False
-  except ipaddress.NetworkValueError:
+  except ipaddress.NetmaskValueError:
     return False
