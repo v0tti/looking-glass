@@ -2,18 +2,16 @@
 <head>
   <title>Looking Glass</title>
   <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <link  href="static/css/font-awesome/css/fontawesome.min.css" rel="stylesheet"/>
   <link href="static/css/material-kit.min.css" rel="stylesheet"/>
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg bg-rose">
+  <nav class="navbar navbar-expand-lg bg-primary">
     <div class="container">
       <div class="navbar-translate">
-        <a class="navbar-brand" style="font-size:35px" href="http://fireprotocol.com">fire protocol</a>
+        <a class="navbar-brand">DN42 Looking Glass by v0tti</a>
       </div>
       <div class="collapse navbar-collapse"></div>
     </div>
@@ -23,8 +21,8 @@
     <div class="row">
       <div class="col-md-6 col-xs-12 col-sm-12">
         <div class="card card-nav-tabs">
-          <div class="card-header card-header-rose">
-          <h3 class="card-title" style="text-align:center;padding-bottom:5px;font-family:'Roboto';font-weight:100">Looking Glass</h3>
+          <div class="card-header card-header-primary">
+          <h3 class="card-title">Request</h3>
           </div>
           <div class="card-body">
             <form onsubmit="return false" name="queryform" id="lgForm">
@@ -32,7 +30,7 @@
             <div class="col-12 col-sm-12 col-xs-12" style="text-align: center;padding: 15px 0px 20px 0px">
               <div class="form-check form-check-radio form-check-inline" style="padding-right:40px">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="cmd" value="bgp"> bgp
+                  <input class="form-check-input" type="radio" name="cmd" value="bgp" checked> bgp
                   <span class="circle"><span class="check"></span></span>
                 </label>
               </div>
@@ -52,31 +50,28 @@
 
               <div class="form-group" style="padding-bottom: 20px">
                 <label for="ipprefix">IP / Prefix</label>
-                <input id="ipprefix" class="form-control" id="ipprefix" placeholder="e.g. 8.8.8.8" style="color:#e91f62;font-size:23px">
+                <input id="ipprefix" class="form-control" id="ipprefix" placeholder="fd23:1d71:dd17::1">
               </div>
 
               <!-- This is the network/ASN dropdown, edit to fit your network-->
               <div class="form-group" style="padding-bottom: 20px">
                 <label for="network">Network</label>
-                <select name="network" id="network" class="form-control selectpicker" data-style="btn btn-link" style="color:#e91f62;font-size:22px">
+                <select name="network" id="network" class="form-control selectpicker" data-style="btn btn-link">
                   <option disabled selected></option>
-                  <option value="" disabled selected> </option>
-                  <option value="65532">Earth - AS65532</option>
-                  <option value="65533">Mars - AS65533</option>
-                  <option value="65534">Saturn - AS65534</option>
+                  <option value="4242423929">AS4242423929 - v0tti</option>
                 </select>
               </div><!-- End of network/ASN dropdown -->
 
               <!-- This is the routers dropdown, it will get populated by the GET /routers call-->
               <div class="form-group" style="padding-bottom: 20px">
                 <label for="router">Router</label>
-                <select id="router" class="form-control selectpicker" data-style="btn btn-link" style="color:#e91f62;font-size:22px">
+                <select id="router" class="form-control selectpicker" data-style="btn btn-link">
                   <option value="" disabled selected></option>
                 </select>
               </div> <!-- End of routers dropdown -->
 
               <div style="padding-bottom:15px" class="text-center">
-              <input id="goButton" type="submit" value="Go !" class="btn btn-rose"></input>
+              <input id="goButton" type="submit" value="Go" class="btn btn-primary"></input>
               </div>
             </form>
           </div>
@@ -84,15 +79,15 @@
       </div>
       <div class="col-md-6 col-xs-12 col-sm-12">
         <div class="card card-nav-tabs">
-          <div class="card-header card-header-rose">
-            <h3 class="card-title" style="text-align:center;padding-bottom:5px;font-family:'Roboto';font-weight:100">Results</h3>
+          <div class="card-header card-header-primary">
+            <h3 class="card-title">Results</h3>
           </div>
             <div class="card-body" style="height:480px;overflow:scroll">
               <div class="container">
               <pre id="queryInfo" style="font-size:13px;margin-bottom:0px">
               </pre>
                   <div class="fa-3x" style="text-align:center">
-                    <i id="loading" class="fa fa-spinner fa-spin" style="color:#e91f62;display:none;padding-top:10px"></i>
+                    <i id="loading" class="fa fa-spinner fa-spin" style="text-align:center;display:none;"></i>
                   </div>
               <pre id="results" style="font-size:12px;overflow:visible">
               </pre>
@@ -103,6 +98,6 @@
       </div>
     </div>
 </body>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="static/js/jquery/dist/jquery.min.js"></script>
 <script src="static/js/lg.js"></script>
 </html>

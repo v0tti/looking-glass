@@ -1,0 +1,6 @@
+[submodule "static/js/jquery"]
+	path = static/js/jquery
+	url = git://github.com/jquery/jquery.git
+[submodule "static/css/font-awesome"]
+	path = static/css/font-awesome
+	url = git://github.com/FortAwesome/Font-Awesome.git
