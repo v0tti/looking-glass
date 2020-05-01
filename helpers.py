@@ -4,6 +4,8 @@ import ipaddress
 # this function returns the router object and the command string to run
 # other router OS may be added to this dictionary in the same fashion, like IOS, SR-OS, etc.
 def get_vars(router_name, cmd, ipprefix):
+  if not router_name or not cmd or not ipprefix:
+    return None, None, "Please enter an IPv6 address and select a network and router."
   if not is_ipv6net(ipprefix):
     return None, None, "{} is not a valid IPv6 address / prefix".format(ipprefix)
   if cmd!="bgp" and not is_ipv6(ipprefix):
