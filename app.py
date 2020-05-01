@@ -31,8 +31,10 @@ def lg():
     # get parameters from the request body
     req_data = request.get_json()
     # obtain the router object and the ready-to-enter command
-    if helpers.is_ipv6(req_data['ipprefix']): 
-      router, command = helpers.get_vars(req_data['router'], req_data['cmd'], req_data['ipprefix'])
+    router, command, error = helpers.get_vars(req_data['router'], req_data['cmd'], req_data['ipprefix'])
+    if error:
+      return (error)
+    else:
       # instantiate our SSH_Client class
       client = ssh_client.SSH_Client(router)
       # run the command
@@ -45,8 +47,6 @@ def lg():
           client.close()
       # each yield iteration  in generate() is sent directly to the browser
       return Response(generate())
-    else:
-      return Response("Not a valid IPv6 address.")
 
 
 
