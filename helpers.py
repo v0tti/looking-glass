@@ -5,9 +5,9 @@ import ipaddress
 # other router OS may be added to this dictionary in the same fashion, like IOS, SR-OS, etc.
 def get_vars(router_name, cmd, ipprefix):
   if not is_ipv6net(ipprefix):
-    return None, None, "{} is not a valid IPv6 Address/Prefix".format(ipprefix)
+    return None, None, "{} is not a valid IPv6 address / prefix".format(ipprefix)
   if cmd!="bgp" and not is_ipv6(ipprefix):
-    return None, None, "{} is not a valid IPv6 Address".format(ipprefix)
+    return None, None, "{} is not a valid IPv6 address".format(ipprefix)
   for r in routers.routers_list:
     if router_name == r['address'][0]:
       router = r
